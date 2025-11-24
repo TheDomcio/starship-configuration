@@ -1,0 +1,235 @@
+format = """
+[╭─](bold cyan)$directory$git_branch$git_commit$git_state$git_status$rust$python$lua$c$golang$dotnet$cmake$terraform${custom.labview}${custom.labview_class}${custom.labview_lib}${custom.labview_plib}${custom.labview_proj}${custom.teststand}${custom.xml}${custom.json}${custom.ini}${custom.yaml}${custom.toml}${custom.markdown}$fill$cmd_duration$memory_usage$battery$time
+[╰─](bold cyan)$character"""
+
+add_newline = true
+command_timeout = 3000
+scan_timeout = 60
+palette = "dracula"
+
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+blue = "#8be9fd"
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold cyan)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+read_only = " 󰌾"
+read_only_style = "red"
+truncation_length = 3
+truncate_to_repo = true
+style = "bold blue"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[directory.substitutions]
+"Documents" = "󰧮 "
+"Music" = " "
+"Movies" = "󰿏 "
+"Pictures" = " "
+"Sources" = " "
+"Downloads" = " "
+"~" = " "
+
+[cmd_duration]
+min_time = 0
+format = "[󱎫 $duration]($style) "
+style = "bold pink"
+show_milliseconds = false
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = "󰍛 "
+style = "bold green"
+format = "[$symbol${ram}]($style) "
+
+[time]
+disabled = false
+format = "[󰥔 $time]($style)"
+style = "bold cyan"
+time_format = "%H:%M:%S"
+
+[battery]
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 15
+style = "bold red"
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[sudo]
+style = 'bold green'
+symbol = '󰢏 '
+allow_windows = true
+disabled = false
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+truncation_length = 24
+format = "[$symbol$branch]($style) "
+
+[git_status]
+conflicted = " ${count} "
+ahead = " ${count} "
+behind = " ${count} "
+diverged = " ${count} "
+untracked = "${count}"
+stashed = " ${count} "
+modified = " ${count} "
+staged = " ${count} "
+renamed = "󰔮 ${count} "
+deleted = " ${count} "
+style = "bold red"
+format = '([$all_status$ahead_behind]($style) )'
+
+[git_commit]
+commit_hash_length = 7
+format = "[ $hash$tag]($style) "
+style = "bold purple"
+only_detached = false
+tag_disabled = false
+tag_symbol = '  '
+
+[git_state]
+format = '[$state( $progress_current/$progress_total)]($style) '
+style = "bold red"
+
+[rust]
+symbol = "󱘗 "
+style = "bold orange"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = " "
+style = "bold yellow"
+format = "[$symbol$version]($style) "
+
+[lua]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol$version]($style) "
+
+[c]
+symbol = " "
+style = "bold blue"
+format = "[$symbol$version]($style) "
+
+[cmake]
+symbol = " "
+style = "bold blue"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol$version]($style) "
+
+[dotnet]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$version]($style) "
+
+[terraform]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$version]($style) "
+detect_extensions = ["tf", "tfvars", "tfstate"]
+
+[custom.xml]
+symbol = "󰗀"
+style = "bold white"
+format = "[$symbol(XML)]($style) "
+detect_extensions = ["xml"]
+
+[custom.json]
+symbol = ""
+style = "bold white"
+format = "[$symbol(JSON)]($style) "
+detect_extensions = ["json"]
+
+[custom.ini]
+symbol = "󰌆"
+style = "bold white"
+format = "[$symbol(Config)]($style) "
+detect_extensions = ["ini", "cfg", "conf"]
+
+[custom.toml]
+symbol = ""
+style = "bold white"
+format = "[$symbol(Config)]($style) "
+detect_extensions = ["toml"]
+
+[custom.yaml]
+symbol = ""
+style = "bold white"
+format = "[$symbol(YAML)]($style) "
+detect_extensions = ["yml"]
+
+[custom.markdown]
+symbol = " "
+style = "bold white"
+format = "[$symbol]($style) "
+detect_extensions = ["md"]
+detect_files = ["README.md"]
+
+[custom.labview_proj]
+symbol = " "
+style = "bold yellow"
+format = "[$symbol(Project)]($style) "
+detect_extensions = ["lvproj"]
+
+[custom.teststand]
+symbol = " "
+style = "bold orange"
+format = "[$symbol(TestStand)]($style) "
+detect_extensions = ["seq", "tsw", "tso", "tpj", "tsd", "tsr", "tsaproj"]
+
+[custom.labview_class]
+symbol = "󰆧"
+style = "bold yellow"
+format = "[$symbol(Class)]($style) "
+detect_extensions = ["lvclass"]
+
+[custom.labview_lib]
+symbol = "󱉟"
+style = "bold yellow"
+format = "[$symbol(Lib)]($style) "
+detect_extensions = ["lvlib"]
+
+[custom.labview_plib]
+symbol = "󰏓"
+style = "bold yellow"
+format = "[$symbol(Lib)]($style) "
+detect_extensions = ["lvlibp", "llb"]
+
+[custom.labview]
+symbol = ""
+style = "bold yellow"
+format = "[$symbol]($style) "
+detect_extensions = ["vi", "vim", "vit", "ctt", "ctl", "xctl", "xnode", "mnu"]
